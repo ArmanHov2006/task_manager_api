@@ -11,6 +11,7 @@ class User(Base):
     password = Column(String, nullable=False)
     
     tasks = relationship("Task", back_populates="owner")
+    projects = relationship("Project", back_populates="owner")
 
 
 class Task(Base):
@@ -23,3 +24,18 @@ class Task(Base):
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     owner = relationship("User", back_populates="tasks")
+    project_id = Column(Integer, ForeignKey("projects.id"))
+    project = relationship("Project", back_populates="tasks")
+
+
+class Project(Base):
+    __tablename__ = "projects"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String)
+
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner = relationship("User", back_populates="projects")
+
+    tasks = relationship("Task", back_populates="project")

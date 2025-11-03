@@ -9,3 +9,20 @@ __pycache__/
 *.sqlite3
 .env
 
+# Python
+__pycache__/
+*.pyc
+
+# Node.js / Frontend
+node_modules/
+frontend/node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# OS-specific junk
+.DS_Store
+Thumbs.db

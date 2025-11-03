@@ -1,0 +1,190 @@
+[00:00:03.454] Server  LOG      ✓ Ready in 2.3s
+[00:00:13.332] Server  LOG      ○ Compiling /register ...
+[00:00:21.990] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:57.880] Browser LOG     Sending registration request: {"email":"testuser1@gmail.com","password":"***","username":"testuser1"}
+[00:00:58.972] Browser LOG     Registration successful: {"email":"testuser1@gmail.com","id":6,"username":"testuser1"}
+[00:03:28.150] Browser LOG     Sending registration request: {"email":"testuser1@gmail.com","password":"***","username":"testuser1"}
+[00:03:28.495] Browser ERROR   Registration failed: {"data":{"detail":"Username already registered"},"message":"Request failed with status code 400","status":400}
+[00:03:28.495] Browser ERROR   Registration error: {"code":"ERR_BAD_REQUEST","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8000","data":"{\"username\":\"testuser1\",\"email\":\"testuser1@gmail.com\",\"password\":\"testuser12006\"}","env":{},"headers":{"Accept":"application/json, text/plain, */*","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"post","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/auth/register","withCredentials":true,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 400","name":"AxiosError","stack":"AxiosError: Request failed with status code 400\n    at settle (http://localhost:3000/_next/static/chunks/ef328_9e0ad4fa._.js:3815:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/ef328_9e0ad4fa._.js:4330:206)\n    at Axios.request (http://localhost:3000/_next/static/chunks/ef328_9e0ad4fa._.js:5134:49)\n    at async Object.register (http://localhost:3000/_next/static/chunks/task_manager_api_frontend_app_0d4e9bbc._.js:43:30)\n    at async handleSubmit (http://localhost:3000/_next/static/chunks/task_manager_api_frontend_app_0d4e9bbc._.js:156:13)","status":400}
+[00:04:38.777] Browser LOG     Sending registration request: {"email":"testuser2@gmail.com","password":"***","username":"testuser2"}
+[00:04:39.751] Browser LOG     Registration successful: {"email":"testuser2@gmail.com","id":7,"username":"testuser2"}
+[00:05:48.592] Browser LOG     Sending registration request: {"email":"testuser3@gmail.com","password":"***","username":"testuser3"}
+[00:05:49.352] Browser LOG     Registration successful: {"email":"testuser3@gmail.com","id":8,"username":"testuser3"}
+[00:09:14.424] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:02.350] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:36.080] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:02.064] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:13:03.513] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:13:07.554] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:13:08.973] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:13:21.294] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:13:22.479] Browser ERROR   uncaughtError: ReferenceError: task is not defined
+[00:14:51.245] Server  LOG      ✓ Compiled in 228ms
+[00:15:14.727] Server  LOG      ✓ Compiled in 210ms
+[00:15:31.507] Server  LOG      ✓ Compiled in 61ms
+[00:16:02.110] Server  LOG      ✓ Compiled in 79ms
+[00:16:02.782] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:16:12.785] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:16:36.056] Server  LOG      ✓ Compiled in 193ms
+[00:16:36.790] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:17:58.787] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:18:12.644] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:12.845] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:18:13.162] Browser ERROR   ./task_manager_api/frontend/app/projects/page.tsx:147:9
+Ecmascript file had an error
+  145 |   }
+  146 |
+> 147 |   const handleEdit = async (id: number) => {
+      |         ^^^^^^^^^^
+  148 |     try {
+  149 |       const project = items.find(p => p.id === id)
+  150 |       if (!project) return
+
+the name `handleEdit` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component Browser]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./task_manager_api/frontend/app/projects/page.tsx [Client Component SSR]
+    ./task_manager_api/frontend/app/projects/page.tsx [Server Component]
+[00:18:13.162] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/tasks" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/task_mana...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <head>
+                          <body
+-                           style={{overflow-x:"hidden",overflow-y:"hidden"}}
+                          >
+                  ...
+
+[00:18:52.495] Server  LOG      ✓ Compiled in 61ms
+[00:20:01.578] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
