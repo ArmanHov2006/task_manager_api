@@ -21,8 +21,12 @@ export default function LoginPage() {
       const token = data.access_token
       loginStore(token)
       router.push('/tasks')
-    } catch (err) {
-      setError('Invalid credentials')
+    } catch (err: any) {
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail)
+      } else {
+        setError('An unexpected error occurred.')
+      }
     }
   }
 

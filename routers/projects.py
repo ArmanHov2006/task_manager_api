@@ -1,31 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from jose import JWTError, jwt
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import models, schemas, utils
+from sqlalchemy import and_
+import models, schemas
 from database import get_db
-from routers.auth import oauth2_scheme
+from routers.auth import get_current_user
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
-
-def get_current_user(
-    token: str = Depends(oauth2_scheme),
-    db: Session = Depends(get_db)
-):
-    try:
-        payload = jwt.decode(token, utils.SECRET_KEY, algorithms=[utils.ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
-            raise HTTPException(status_code=401, detail="Invalid token")
-    except JWTError:
-        raise HTTPException(status_code=401, detail="Invalid token")
-    
-    user = db.query(models.User).filter(models.User.username == username).first()
-    if user is None:
-        raise HTTPException(status_code=401, detail="User not found")
-    return user
 
 
 @router.post("/", response_model=schemas.Project, status_code=status.HTTP_201_CREATED)
@@ -56,11 +36,37 @@ def get_project(
     db: Session = Depends(get_db)
 ):
     project = db.query(models.Project).filter(
-        models.Project.id == project_id,
-        models.Project.owner_id == current_user.id
+        and_(
+            models.Project.id == project_id,
+            models.Project.owner_id == current_user.id
+        )
     ).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
+    return project
+
+
+@router.put("/{project_id}", response_model=schemas.Project)
+def update_project(
+    project_id: int,
+    project_update: schemas.ProjectCreate,
+    current_user: models.User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    project = db.query(models.Project).filter(
+        and_(
+            models.Project.id == project_id,
+            models.Project.owner_id == current_user.id
+        )
+    ).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+    
+    project.name = project_update.name
+    project.description = project_update.description
+    
+    db.commit()
+    db.refresh(project)
     return project
 
 
@@ -71,8 +77,10 @@ def delete_project(
     db: Session = Depends(get_db)
 ):
     project = db.query(models.Project).filter(
-        models.Project.id == project_id,
-        models.Project.owner_id == current_user.id
+        and_(
+            models.Project.id == project_id,
+            models.Project.owner_id == current_user.id
+        )
     ).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")

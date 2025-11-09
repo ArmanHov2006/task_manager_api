@@ -9,6 +9,7 @@ export function useAuth() {
   const logout = useAuthStore((s) => s.logout)
 
   useEffect(() => {
+    useAuthStore.getState().validateToken()
     setMounted(true)
   }, [])
 

@@ -1,8 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Box, Button, Heading, List, ListItem, Checkbox, Text, Stack, IconButton, Input, useToast } from '@chakra-ui/react'
 import { tasks } from '../lib/api'
+import { useAuth } from '../hooks/useAuth'
 
 interface Task {
   id: number
@@ -17,6 +19,14 @@ export default function TasksPage() {
   const [description, setDescription] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const toast = useToast()
+  const router = useRouter()
+  const { isAuthenticated, isLoading: authLoading } = useAuth()
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login')
+    }
+  }, [isAuthenticated, authLoading, router])
 
   const load = async () => {
     try {
@@ -35,7 +45,11 @@ export default function TasksPage() {
     }
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { 
+    if (isAuthenticated) {
+      load() 
+    }
+  }, [isAuthenticated])
 
   const handleAdd = async () => {
     if (!title.trim()) {
@@ -120,6 +134,10 @@ export default function TasksPage() {
         position: 'bottom',
       })
     }
+  }
+
+  if (authLoading || !isAuthenticated) {
+    return null
   }
 
   return (

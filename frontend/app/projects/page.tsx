@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Box, Button, Heading, List, ListItem, Text, Stack, Input, useToast, IconButton, Flex } from '@chakra-ui/react'
 import { projects } from '../lib/api'
 import { EditIcon } from '@chakra-ui/icons'
+import { useAuth } from '../hooks/useAuth'
 
 interface Project {
   id: number
@@ -17,6 +19,14 @@ export default function ProjectsPage() {
   const [description, setDescription] = useState('')
   const [editingId, setEditingId] = useState<number | null>(null)
   const toast = useToast()
+  const router = useRouter()
+  const { isAuthenticated, isLoading: authLoading } = useAuth()
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login')
+    }
+  }, [isAuthenticated, authLoading, router])
 
   const load = async () => {
     try {
@@ -34,7 +44,11 @@ export default function ProjectsPage() {
     }
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { 
+    if (isAuthenticated) {
+      load() 
+    }
+  }, [isAuthenticated])
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -201,6 +215,10 @@ export default function ProjectsPage() {
         position: 'bottom'
       })
     }
+  }
+
+  if (authLoading || !isAuthenticated) {
+    return null
   }
 
   return (

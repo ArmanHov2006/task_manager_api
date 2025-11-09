@@ -1,10 +1,12 @@
 import { create } from 'zustand'
+import { jwtDecode } from 'jwt-decode'
 
 interface AuthState {
   token: string | null
   isAuthenticated: boolean
   login: (token: string) => void
   logout: () => void
+  validateToken: () => void
 }
 
 const getInitialState = () => ({
@@ -26,12 +28,23 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ token: null, isAuthenticated: false })
     }
   },
-}))
-
-// Initialize the store on the client side
-if (typeof window !== 'undefined') {
-  const token = localStorage.getItem('token')
-  if (token) {
-    useAuthStore.getState().login(token)
+  validateToken: () => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token')
+      if (token) {
+        try {
+          const decodedToken: { exp: number } = jwtDecode(token)
+          if (decodedToken.exp * 1000 > Date.now()) {
+            set({ token, isAuthenticated: true })
+          } else {
+            localStorage.removeItem('token')
+            set({ token: null, isAuthenticated: false })
+          }
+        } catch (error) {
+          localStorage.removeItem('token')
+          set({ token: null, isAuthenticated: false })
+        }
+      }
+    }
   }
-}
+}))

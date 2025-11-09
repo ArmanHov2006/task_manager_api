@@ -2,6 +2,9 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
+# Export Base so main.py can access it via models.Base
+__all__ = ['Base', 'User', 'Task', 'Project']
+
 class User(Base):
     __tablename__ = "users"
     
@@ -35,7 +38,7 @@ class Project(Base):
     name = Column(String, index=True)
     description = Column(String)
 
-    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     owner = relationship("User", back_populates="projects")
 
     tasks = relationship("Task", back_populates="project")
