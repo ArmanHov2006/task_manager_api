@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import models
-import database
-from routers import tasks, users, auth, projects
+from task_manager_api import models
+from task_manager_api import database
+from task_manager_api.routers import tasks, users, auth, projects
 
 # Create database tables
 models.Base.metadata.create_all(bind=database.engine)

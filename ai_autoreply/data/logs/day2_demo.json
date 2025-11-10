@@ -1,0 +1,17 @@
+[
+    {
+        "input": "Hey, can we schedule a quick meeting tomorrow to go over the report?",
+        "intent": "meeting_request",
+        "ai_reply": "[AI Reply Simulation] Write a short polite confirmation for a meeting request.\n\nMessage: Hey, can we schedule a quick meet..."
+    },
+    {
+        "input": "Thanks a lot for the help with the documents!",
+        "intent": "thank_you",
+        "ai_reply": "[AI Reply Simulation] Write a warm acknowledgment.\n\nMessage: Thanks a lot for the help with the documents!\nReply:..."
+    },
+    {
+        "input": "There's an issue with my last order, can you look into it?",
+        "intent": "complaint",
+        "ai_reply": "[AI Reply Simulation] Write a professional, empathetic response to a customer complaint.\n\nMessage: There's an issue with m..."
+    }
+]

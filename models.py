@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from database import Base
+from .database import Base
 
 # Export Base so main.py can access it via models.Base
 __all__ = ['Base', 'User', 'Task', 'Project']
